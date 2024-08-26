@@ -1,31 +1,31 @@
 #include <iostream>
 #include <utility>
 #include <vector>
-
+using namespace std;
 class Foo {
 private:
     int* _num;
 
 public:
     Foo(int arg) : _num(new int(arg)) {
-        std::cout << "Clase Foo: Constructor -> " << arg << std::endl;
+        cout << "Clase Foo: Constructor -> " << arg << std::endl;
     }
 
     ~Foo() {
         if (_num) {
-            std::cout << "Clase Foo: Destructor -> " << *_num << std::endl;
+            cout << "Clase Foo: Destructor -> " << *_num << endl;
             delete _num;
         } else {
-            std::cout << "Clase Foo: Destructor -> nullptr" << std::endl;
+            cout << "Clase Foo: Destructor -> nullptr" << endl;
         }
     }
 
     Foo(const Foo& other) : _num(new int(*other._num)) {
-        std::cout << "Clase Foo: Constructor Copia -> " << *_num << std::endl;
+        cout << "Clase Foo: Constructor Copia -> " << *_num << endl;
     }
 
     Foo(Foo&& other) noexcept : _num(other._num) {
-        std::cout << "Clase Foo: Constructor Mov -> " << *_num << std::endl;
+        cout << "Clase Foo: Constructor Mov -> " << *_num << endl;
         other._num = nullptr;
     }
 
@@ -33,7 +33,7 @@ public:
         if (this != &other) {
             delete _num;
             _num = new int(*other._num);
-            std::cout << "Clase Foo: Operador de asignación de copia -> " << *_num << std::endl;
+            cout << "Clase Foo: Operador de asignación de copia -> " << *_num << endl;
         }
         return *this;
     }
@@ -43,7 +43,7 @@ public:
             delete _num;
             _num = other._num;
             other._num = nullptr;
-            std::cout << "Clase Foo: Operador de asignación de movimiento -> " << *_num << std::endl;
+            cout << "Clase Foo: Operador de asignación de movimiento -> " << *_num << endl;
         }
         return *this;
     }
@@ -60,26 +60,26 @@ void test2() {
 }
 
 void test3() {
-    std::vector<Foo> v;
+    vector<Foo> v;
     v.push_back(Foo(4));
 }
 
 void test4() {
     Foo f1(3);
-    Foo f2(std::move(f1));
+    Foo f2(move(f1));
 }
 
 int main() {
-    std::cout << "Test 1:" << std::endl;
+    cout << "Test 1:" << endl;
     test1();
     
-    std::cout << "\nTest 2:" << std::endl;
+    cout << "\nTest 2:" << endl;
     test2();
     
-    std::cout << "\nTest 3:" << std::endl;
+    cout << "\nTest 3:" << endl;
     test3();
     
-    std::cout << "\nTest 4:" << std::endl;
+    cout << "\nTest 4:" << endl;
     test4();
 
     return 0;
