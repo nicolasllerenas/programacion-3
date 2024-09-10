@@ -1,4 +1,5 @@
 #include <iostream>
+using namespace std;
 
 // Forward declaration of class B
 class B;
@@ -17,21 +18,21 @@ public:
     friend class A;
     friend void A::print(B& b); 
     friend void f(B& b);
-    friend std::ostream& operator<<(std::ostream& os, B& b);
+    friend ostream& operator<<(std::ostream& os, B& b);
 };
 
 void f(B& b) {
-    std::cout << b.b << std::endl;
+    cout << b.b << std::endl;
 }
 
-std::ostream& operator<<(std::ostream& os, B& b) {
+ostream& operator<<(ostream& os, B& b) {
     os << b.b << std::endl;
     return os;
 }
 
 
 void A::print(B &b) {
-    std::cout << b.b << std::endl;
+    cout << b.b << std::endl;
 }
 
 int main() {
@@ -39,6 +40,6 @@ int main() {
     B b(2);
     a.print(b);
     f(b);
-    std::cout << b << std::endl;
+    cout << b << std::endl;
     return 0;
 }
