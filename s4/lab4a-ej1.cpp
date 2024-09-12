@@ -7,8 +7,9 @@ template<typename T>
 T sumar(T inp1, T inp2){
     return inp1 + inp2;
 }
-template <typename T1, typename T2>
-char sumar(T1 inp1, T1 inp2){
+
+template<typename T1, typename T2>
+char sumar(T1 inp1, T2 inp2){
     return inp1 + inp2;
 }
 int main() {
