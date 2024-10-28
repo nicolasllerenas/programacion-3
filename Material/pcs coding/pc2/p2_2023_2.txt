@@ -1,0 +1,18 @@
+Condición inicial: 
+Si 𝑛 = 1, el algoritmo retorna 𝑥 .
+
+Esto es correcto porque 𝑥^1 = 𝑥 , lo cual cumple el invariante de que el valor devuelto será 𝑥^𝑛 , donde 𝑛 = 1
+
+Hay dos casos importantes para mantener el invariante:
+Si n es impar (n%2 == 1):
+Se mantiene el invariante 𝑥^𝑛 
+Si n es par (n%2 == 0):
+Se mantiene el invariante 𝑥^𝑛 
+
+Terminación:
+
+debemos verificar que el invariante sigue siendo verdadero al terminar el algoritmo.
+
+Cuando n=1, como ya se ha demostrado en la inicialización, la función retorna x, lo cual es correcto porque x^1 = x. Para valores mayores de n, los casos recursivos aseguran que el valor devuelto es siempre x^n debido a las divisiones de n en mitades, hasta que se llega al caso base.
+
+Este invariante es suficiente para demostrar que el algoritmo de potencia rápida es correcto y efectivamente calcula x^n con una complejidad más eficiente que multiplicar x repetidamente n veces, con una complejidad de búsqueda binaria.
